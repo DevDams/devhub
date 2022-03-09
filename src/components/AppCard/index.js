@@ -20,7 +20,7 @@ const AppCard = () => {
           <Toggle />
         </div>
         {/* Search bar */}
-        <div className="search-bar mt-2 flex h-14 w-full items-center justify-between rounded-xl bg-gray-200 shadow-sm">
+        <div className="search-bar mt-2 flex h-12 sm:h-14 w-full items-center justify-between rounded-xl bg-gray-200 shadow-sm">
           <div className="relative flex h-full w-full items-center dark:bg-myblack-dark">
             <img
               src={SearchIcon}
