@@ -1,13 +1,19 @@
-import "./App.css";
+import React from "react";
 
-function App() {
+// Components
+import AppCard from "./components/AppCard";
+
+const App = () => {
   return (
-    <div className="App">
-      <p className="mt-24 pt-3 text-center text-4xl font-bold text-violet-600">
-        Welcome to DevHub
-      </p>
+    <div className="w-full flex justify-center pt-24 pb-10">
+      <div className="w-full">
+        {/* <h1 className="text-4xl text-center font-bold text-violet-500">
+          A la recherche d'un <br/> profil Github
+        </h1> */}
+        <AppCard />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
