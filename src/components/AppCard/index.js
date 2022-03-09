@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 // components
 import Toggle from "../ThemeToggle/index";
+import ProfilCard from "../ProfilCard/index";
 // imges et icons
 import SearchIcon from "../../assets/icons/search.svg";
 import SearchIconWhite from "../../assets/icons/search-white.svg";
@@ -12,13 +13,15 @@ const AppCard = () => {
         {/* Header */}
         <div className="header flex h-16 w-full items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold dark:text-white">DevHub</h1>
+            <h1 className="text-2xl font-bold dark:text-myblack-gray">
+              DevHub
+            </h1>
           </div>
           <Toggle />
         </div>
         {/* Search bar */}
         <div className="search-bar mt-2 flex h-14 w-full items-center justify-between rounded-xl bg-gray-200 shadow-sm">
-          <div className="relative flex h-full w-full items-center">
+          <div className="relative flex h-full w-full items-center dark:bg-myblack-dark">
             <img
               src={SearchIcon}
               alt="search-icon"
@@ -26,7 +29,7 @@ const AppCard = () => {
             />
             <input
               type="text"
-              className="h-full w-full rounded-xl border-2 border-gray-100 px-6 text-lg font-medium outline-none dark:bg-gray-50 sm:pl-14"
+              className="h-full w-full rounded-xl border-2 border-gray-100 px-6 text-lg font-medium outline-none focus:border-myblack-gray focus:shadow-sm dark:text-myblack-gray dark:bg-myblack-medium dark:border-transparent dark:focus:border-myblack-gray sm:pl-14"
             />
             <button className="text-md absolute right-0 flex h-full w-1/5 cursor-pointer items-center justify-center rounded-xl bg-violet-500 font-semibold text-white">
               <span className="hidden sm:block">Rechercher</span>
@@ -38,6 +41,8 @@ const AppCard = () => {
             </button>
           </div>
         </div>
+        {/* Profil info */}
+        <ProfilCard />
       </div>
     </>
   );

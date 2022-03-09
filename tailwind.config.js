@@ -4,7 +4,16 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        myblack: {
+          dark: '#202020',
+          medium: '#353535',
+          ligth: '#4F4F4F',
+          gray: '#b1b1b1',
+        },
+      }
+    },
   },
   plugins: [],
 }

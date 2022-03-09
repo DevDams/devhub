@@ -5,7 +5,6 @@ import "./fonts/font-style.css";
 import App from "./App";
 import { ThemeProvider } from "./context/ThemeContext";
 import Background from "./components/Background/index";
-import Toggle from "./components/ThemeToggle/index";
 
 ReactDOM.render(
   <React.StrictMode>
