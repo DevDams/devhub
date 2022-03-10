@@ -24,7 +24,7 @@ const AppCard = () => {
         <div className="header flex h-16 w-full items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold dark:text-myblack-gray">
-              DevHub
+              DevThub
             </h1>
           </div>
           <Toggle />
