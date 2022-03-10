@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import axios from 'axios'
 // components
 import Toggle from "../ThemeToggle/index";
 import ProfilCard from "../ProfilCard/index";
@@ -9,12 +10,39 @@ import SearchIconWhite from "../../assets/icons/search-white.svg";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const AppCard = () => {
+  const baseURL = 'https://api.github.com/users'
+
   const { theme } = useContext(ThemeContext);
 
-  const [Loader, setLoader] = useState(false);
+  const [Loader, setLoader] = useState(true);
+
+  const [User, setUser] = useState({});
+
+  const [Input, setInput] = useState('');
+
+  useEffect(() => {
+    axios.get(`${baseURL}/devdams`).then((response) => {
+      setUser(response.data)
+      setLoader(false)
+    }).catch(error => {
+      console.log('error axios', error)
+    });
+    
+  }, []);
 
   const fetchData = () => {
     setLoader(true)
+    axios.get(`${baseURL}/${Input}`).then(res => {
+      if (res.data) {
+        setLoader(false)
+        setUser(res.data)
+      }
+    }).catch(error => {
+      if (error.response.data.message === 'Not Found') {
+        setLoader(false)
+        setUser({})
+      }
+    })
   }
 
   return (
@@ -40,6 +68,7 @@ const AppCard = () => {
             <input
               type="text"
               className="h-full w-full rounded-xl border-2 border-gray-100 px-6 text-lg font-medium outline-none focus:border-gray-200 focus:shadow-sm dark:border-transparent dark:bg-myblack-medium dark:text-myblack-gray dark:focus:border-myblack-gray sm:pl-14"
+              onInput={e => setInput(e.target.value)}
             />
             <button className="text-md absolute right-1 flex h-10 w-14 cursor-pointer items-center justify-center rounded-xl bg-violet-500 font-semibold text-white sm:right-2 sm:w-1/5" onClick={fetchData}>
               <span className="hidden sm:block">Rechercher</span>
@@ -52,7 +81,7 @@ const AppCard = () => {
           </div>
         </div>
         {/* Profil info */}
-        <ProfilCard loader={Loader} />
+        <ProfilCard loader={Loader} user={User} />
       </div>
     </>
   );
