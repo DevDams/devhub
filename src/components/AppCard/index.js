@@ -63,11 +63,12 @@ const AppCard = () => {
             <img
               src={theme === "light" ? SearchIcon : SearchIconWhite}
               alt="search-icon"
-              className="absolute ml-5 hidden w-7 sm:block"
+              className="absolute ml-5 hidden w-6 sm:block"
             />
             <input
               type="text"
               className="h-full w-full rounded-xl border-2 border-gray-100 px-6 text-lg font-medium outline-none focus:border-gray-200 focus:shadow-sm dark:border-transparent dark:bg-myblack-medium dark:text-myblack-gray dark:focus:border-myblack-gray sm:pl-14"
+              placeholder="devdams"
               onInput={e => setInput(e.target.value)}
             />
             <button className="text-md absolute right-1 flex h-10 w-14 cursor-pointer items-center justify-center rounded-xl bg-violet-500 font-semibold text-white sm:right-2 sm:w-1/5" onClick={fetchData}>
