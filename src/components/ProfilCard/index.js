@@ -121,7 +121,7 @@ const ProfilCard = ({ loader, user }) => {
               />
               {user.twitter_username ? (
                 <span className="sm:text-md text-sm dark:text-myblack-gray">
-                  <a href={`https://twitter.com/${user.twitter_username}`} target="_blank">@{user.twitter_username}</a>
+                  <a href={`https://twitter.com/${user.twitter_username}`} target="_blank" rel="noreferrer">@{user.twitter_username}</a>
                 </span>
               ) : (
                 <span className="sm:text-md text-sm dark:text-myblack-gray">
@@ -139,7 +139,7 @@ const ProfilCard = ({ loader, user }) => {
               />
               {user.blog ? (
                 <span className="sm:text-md text-sm dark:text-myblack-gray">
-                  <a href={user.blog} target="_blank">Site web</a>
+                  <a href={user.blog} target="_blank" rel="noreferrer">Site web</a>
                 </span>
               ) : (
                 <span className="sm:text-md text-sm dark:text-myblack-gray">
