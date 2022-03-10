@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+// components
+import Loader from "../loader";
 // images and icons
 import PositionIcon from "../../assets/icons/compass.svg";
 import TwitterIcon from "../../assets/icons/twitter.svg";
@@ -9,12 +11,24 @@ import LinkedIconWhite from "../../assets/icons/linkedin-white.svg";
 
 import { ThemeContext } from "../../context/ThemeContext";
 
-const ProfilCard = () => {
+const ProfilCard = ({ loader }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
     <div>
-      <div className="mt-5 flex w-full flex-col items-center rounded-lg border-2 border-gray-200 bg-white py-6 px-6 shadow-lg shadow-sm dark:border-none dark:bg-myblack-medium dark:text-gray-900 sm:flex sm:flex-row sm:items-start lg:px-8">
+      <div className="relative mt-5 flex w-full flex-col items-center rounded-lg border-2 border-gray-200 bg-white py-6 px-6 shadow-lg shadow-sm dark:border-none dark:bg-myblack-medium dark:text-gray-900 sm:flex sm:flex-row sm:items-start lg:px-8">
+        {/* Loader */}
+        {loader ? (
+          <div className="absolute top-0 left-0 z-30 flex h-full w-full items-center justify-center rounded-lg bg-black/60">
+            <Loader />
+          </div>
+        ) : null}
+        {/* No user found */}
+        <div className="absolute top-0 left-0 flex h-full w-full items-center justify-center rounded-lg  bg-white dark:bg-myblack-medium">
+          <p className="text-xl font-bold dark:text-myblack-gray">
+            Aucun utilisateur trouvé
+          </p>
+        </div>
         {/* Porfil Picture */}
         <div>
           <div className="h-24 w-24 rounded-full bg-violet-500 sm:h-20 sm:w-20 lg:h-24 lg:w-24"></div>
@@ -58,21 +72,41 @@ const ProfilCard = () => {
           </div>
           <div className="mt-8 flex items-center justify-around font-medium text-myblack-dark">
             <p className="flex items-center">
-              <img src={ theme === 'light' ? PositionIcon : PositionIconWhite} alt="search-icon" className="mr-2 w-5" />
-              <span className="dark:text-myblack-gray text-sm sm:text-md">San Francisco</span>
+              <img
+                src={theme === "light" ? PositionIcon : PositionIconWhite}
+                alt="search-icon"
+                className="mr-2 w-5"
+              />
+              <span className="sm:text-md text-sm dark:text-myblack-gray">
+                San Francisco
+              </span>
             </p>
             <p className="flex items-center">
-              <img src={ theme === 'light' ?  TwitterIcon : TwitterIconWhite } alt="search-icon" className="mr-2 w-5" />
-              <span className="dark:text-myblack-gray text-sm sm:text-md">Not available</span>
+              <img
+                src={theme === "light" ? TwitterIcon : TwitterIconWhite}
+                alt="search-icon"
+                className="mr-2 w-5"
+              />
+              <span className="sm:text-md text-sm dark:text-myblack-gray">
+                Not available
+              </span>
             </p>
           </div>
-          <div className="flex items-center justify-around mt-2 font-medium text-myblack-dark">
+          <div className="mt-2 flex items-center justify-around font-medium text-myblack-dark">
             <p className="flex items-center">
-            <img src={ theme === 'light' ?  LinkedIcon : LinkedIconWhite} alt="search-icon" className="mr-2 w-5" />
-              <span className="dark:text-myblack-gray text-sm sm:text-md">San Francisco</span>
+              <img
+                src={theme === "light" ? LinkedIcon : LinkedIconWhite}
+                alt="search-icon"
+                className="mr-2 w-5"
+              />
+              <span className="sm:text-md text-sm dark:text-myblack-gray">
+                San Francisco
+              </span>
             </p>
             <p className="flex items-center">
-              <span className="dark:text-myblack-gray text-sm sm:text-md">Not available</span>
+              <span className="sm:text-md text-sm dark:text-myblack-gray">
+                Not available
+              </span>
             </p>
           </div>
         </div>
